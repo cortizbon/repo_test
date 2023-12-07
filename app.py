@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-import yfinance as yf
+#import yfinance as yf
 
 st.title("Esto es una app")
 

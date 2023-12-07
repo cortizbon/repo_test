@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-#import yfinance as yf
+import yfinance as yf
 
 st.title("Esto es una app")
 
@@ -9,8 +9,8 @@ X = np.random.normal(0, 1, 1000)
 Y = np.random.normal(0, 5, 1000)
 e = np.random.normal(0, 1, 1000)
 
-#tesla = yf.ticker("TSLA")
-#tesla_data = tesla.history(period='max')['Close'].reset_index()
+tesla = yf.Ticker("TSLA")
+tesla_data = tesla.history(period='max')['Close'].reset_index()
 
 tab1, tab2, tab3 = st.tabs(["Tab1", "Tab2", "Tab3"])
 
@@ -38,5 +38,11 @@ with tab2:
 
     st.pyplot(fig)
 
+with tab3:
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(tesla_data['Date'], tesla_data['Close'], color='k', alpha=0.6, ls='--')
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    st.pyplot(fig)
 
     
